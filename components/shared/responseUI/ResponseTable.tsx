@@ -47,7 +47,7 @@ const CreateTable = ({ data }: any) => {
 
                 // IF DATA IS A FUCKING ARRAY, TODO RECURSION
                 if (Array.isArray(item[header]))
-                  return item[header].map((itm) => (
+                  return item[header].map((itm: any) => (
                     <DataTableCell dataToPrint="TODO MODAL" key={header} />
                   ));
                 // IF DATA IS NULL, PRINT NULL (THIS WILL BE REMOVED)
