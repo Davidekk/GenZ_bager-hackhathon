@@ -12,8 +12,8 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/assets/icons/home.svg",
-    route: "/community",
-    label: "daco",
+    route: "/accounts",
+    label: "Účty",
   },
   {
     imgURL: "/assets/icons/home.svg",
