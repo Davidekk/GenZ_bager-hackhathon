@@ -11,6 +11,10 @@
     @apply text-dark-100 dark:text-light-900 !important;
   }
 
+  .background-light800_dark300 {
+    @apply bg-light-800 dark:bg-dark-300 !important;
+  }
+
   .background-light850_dark100 {
     @apply bg-light-850 dark:bg-dark-100;
   }
@@ -57,5 +61,9 @@
 
   .light-border {
     @apply border-light-800 dark:border-dark-300;
+  }
+
+  .shadow-light100_darknone {
+    @apply shadow-light-100 dark:shadow-none;
   }
 }
