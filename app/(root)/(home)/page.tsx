@@ -1,11 +1,19 @@
 // import Image from "next/image";
 import CreateTable from "@/components/shared/responseUI/ResponseTable";
+import Modal from "@/components/shared/Modal";
+
 
 export default function Home() {
   return (
-    <div className="mx-10">
-      <CreateTable data={tableData} />
-    </div>
+    <>
+      <div className="mx-10">
+        <div className="flex-between my-5 flex gap-1">
+          <Modal data={tableData} />
+        </div>
+        <CreateTable data={tableData} />
+      </div>
+    </>
+
 
   );
 }
