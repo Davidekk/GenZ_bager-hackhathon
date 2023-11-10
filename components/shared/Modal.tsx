@@ -7,11 +7,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../../zive-it-projekty-2023-bart/components/ui/dialog";
+} from "@/components/ui/dialog";
 import Image from "next/image";
-import UniversalChart from "../../../zive-it-projekty-2023-bart/components/shared/responseUI/UniversalChart";
+import UniversalChart from "./responseUI/ResponseTable";
 import { useState } from "react";
-import { Button } from "../../../zive-it-projekty-2023-bart/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 const CreateHeader = ({ headerData, setDataKey }: any) => {
   console.log(headerData);
