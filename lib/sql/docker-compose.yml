@@ -1,0 +1,13 @@
+version: "3.1"
+
+services:
+  db:
+    container_name: postgres_container_hackhathon
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: hackhathon # Názov novej databázy
+    ports:
+      - "5432:5432"
