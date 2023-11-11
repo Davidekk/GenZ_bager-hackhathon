@@ -20,7 +20,7 @@ export interface getSQLParams {
 
 export interface groupCreateParams {
   title: string;
-  ownerId: Schema.Types.ObjectId;
+  ownerId: any;
   groupIds: string[];
   path: string;
 }
