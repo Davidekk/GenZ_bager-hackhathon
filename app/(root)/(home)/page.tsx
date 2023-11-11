@@ -19,7 +19,7 @@ export default async function NameChangesPageWrapper({
   searchParams,
   getGroupsId,
   userId,
-}: SearchParamsProps) {
+}: any) {
   const key = JSON.stringify({
     searchParams,
     dialog: undefined,
@@ -37,7 +37,7 @@ export default async function NameChangesPageWrapper({
   );
 }
 
-async function NameChangesPage({ searchParams }: SearchParamsProps) {
+async function NameChangesPage({ searchParams }: any) {
   let result: QuestionResult = { sqlResponse: [], isNext: false };
   const pagination: any[][] = [];
   if (searchParams.q) {
