@@ -12,4 +12,23 @@ export interface getSQLParams {
   question: string;
   page: number;
   pageSize: number;
+  groupId?: any;
+  userId?: any;
+}
+
+export interface groupCreateParams {
+  title: string;
+  ownerId: any;
+  groupIds: string[];
+  path: string;
+}
+
+export interface getGroupByIdParams {
+  id: string;
+}
+export interface bankCreateParams {
+  title: string;
+  ownerId: any;
+  icon: string;
+  path: string;
 }

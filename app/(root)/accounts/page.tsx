@@ -1,26 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
 import BankCards from "@/components/shared/bankCardUI/BankCards";
 
-const page = () => {
-  return (
-    <BankCards data={data}/>
-  );
+import { getBankById } from "@/lib/action/bank.action";
+
+const page = async () => {
+  const result = await getBankById({ id: "1" });
+
+  return <BankCards data={result} />;
 };
 
 export default page;
-
-const data = [
-  {
-    "bank":"Tatra Banka",
-    "owner":"David Halčin"
-  },
-  {
-    "bank":"Slovenská Sporiteľňa",
-    "owner":"Vladimír Hric"
-  },
-  {
-    "bank":"Banan Bank",
-    "owner":"Milan Pankuch"
-  }
-]

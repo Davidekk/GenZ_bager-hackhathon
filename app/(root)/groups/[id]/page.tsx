@@ -1,11 +1,13 @@
 import CreateTable from "@/components/shared/responseUI/ResponseTable";
 import { Suspense } from "react";
-import Loading from "./loading";
 import Dropdown from "@/components/shared/DropDown";
+import { SearchParamsProps, URLProps } from "@/types";
 import Search from "@/components/shared/Search";
 import { getQuestion } from "@/lib/action/openai.action";
 import NoResult from "@/components/shared/NoResult";
 import Pagination from "@/components/Pagination";
+import Loading from "./loading";
+import { getGroupById } from "@/lib/action/groups.action";
 
 type QuestionResult = {
   sqlResponse?: any[];
@@ -16,27 +18,45 @@ type QuestionResult = {
 
 export default async function NameChangesPageWrapper({
   searchParams,
-  getGroupsId,
-  userId,
-}: any) {
+  params,
+}: URLProps) {
   const key = JSON.stringify({
     searchParams,
     dialog: undefined,
   });
 
+  const getGroupsId = await getGroupById({ id: params.id });
+  console.log(getGroupsId);
+  if (!getGroupsId) {
+    return (
+      <NoResult
+        title={"There is nothing to show"}
+        description={"Ask a questions"}
+      />
+    );
+  }
+
   return (
     <>
       <div className="flex-center flex w-full ">
-        <Search route="/" />
+        <Search route={`/groups/${params.id}`} />
       </div>
       <Suspense key={key} fallback={<Loading />}>
-        <NameChangesPage searchParams={searchParams} />
+        <NameChangesPage
+          searchParams={searchParams}
+          getGroupsId={getGroupsId}
+          userId={params.id}
+        />
       </Suspense>
     </>
   );
 }
 
-async function NameChangesPage({ searchParams }: any) {
+async function NameChangesPage({
+  searchParams,
+  getGroupsId,
+  userId,
+}: SearchParamsProps) {
   let result: QuestionResult = { sqlResponse: [], isNext: false };
   const pagination: any[][] = [];
   if (searchParams.q) {
@@ -44,6 +64,7 @@ async function NameChangesPage({ searchParams }: any) {
       question: searchParams.q,
       page: searchParams.page ? +searchParams.page : 1,
       pageSize: 2,
+      groupId: getGroupsId,
     })) || { sqlResponse: [], isNext: false };
     if (result?.sqlResponse?.length) {
       if (result?.sqlResponse) {
@@ -58,7 +79,7 @@ async function NameChangesPage({ searchParams }: any) {
   return (
     <>
       <div className="flex-between my-5 flex gap-1">
-        <Dropdown data={data} />
+        <Dropdown />
       </div>
       {result?.sqlResponse?.length === 0 ? (
         <>
@@ -80,13 +101,3 @@ async function NameChangesPage({ searchParams }: any) {
     </>
   );
 }
-
-const data = [
-  { name: "Milan", surname: "Pankuch", amount: 10 },
-  { name: "Milan", surname: "Pankuch", amount: 30 },
-  { name: "Milan", surname: "Pankuch", amount: 20 },
-  { name: "Dávid", surname: "Halčin", amount: 20 },
-  { name: "Erik", surname: "Mišenčík", amount: 10 },
-  { name: "Vladimír", surname: "Hric", amount: 50 },
-  { name: "Martin", surname: "Onufrák", amount: 40 },
-];
