@@ -2,7 +2,6 @@ import CreateTable from "@/components/shared/responseUI/ResponseTable";
 import { Suspense } from "react";
 import Loading from "./loading";
 import Dropdown from "@/components/shared/DropDown";
-import { SearchParamsProps } from "@/types";
 import Search from "@/components/shared/Search";
 import { getQuestion } from "@/lib/action/openai.action";
 import NoResult from "@/components/shared/NoResult";

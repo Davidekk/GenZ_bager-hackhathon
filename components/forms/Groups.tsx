@@ -16,12 +16,11 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { CreateGroups } from "@/lib/validation";
 import React, { useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { Badge } from "../ui/badge";
 import { createGroup } from "@/lib/action/groups.action";
 
 const Question = () => {
-  const router = useRouter();
   const pathname = usePathname();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -92,16 +91,13 @@ const Question = () => {
           name="title"
           render={({ field }) => (
             <FormItem className="mt-10 flex w-full  flex-col">
-              <FormLabel className="text-dark400_light800 paragraph-semibold ">
-                Názov skupiny <span className="text-primary-500">*</span>
+              <FormLabel className=" ">
+                Názov skupiny <span className="">*</span>
               </FormLabel>
               <FormControl className="mt-4">
-                <Input
-                  className="no-focus paragraph-regular  background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
-                  {...field}
-                />
+                <Input className="no-focus  min-h-[56px] border" {...field} />
               </FormControl>
-              <FormDescription className="body-regular mt-2.5 text-light-500">
+              <FormDescription className=" mt-2.5 text-light-500">
                 Zvoľte jednoduchý názov.
               </FormDescription>
               <FormMessage className="text-red-500" />
@@ -114,14 +110,12 @@ const Question = () => {
           name="tags"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col">
-              <FormLabel className="text-dark400_light800 paragraph-semibold ">
-                Pridajte členov tejto skupiny{" "}
-              </FormLabel>
+              <FormLabel className="">Pridajte členov tejto skupiny </FormLabel>
               <FormControl className="mt-4">
                 <>
                   <Input
                     placeholder="Add tags..."
-                    className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
+                    className="no-focus   min-h-[56px] border"
                     onKeyDown={(e) => handleInputKeyDown(e, field)}
                   />
                   {field.value.length > 0 && (
@@ -129,7 +123,7 @@ const Question = () => {
                       {field.value.map((val) => (
                         <Badge
                           key={val}
-                          className="suble-medium background-light800_dark300 text-light400_dark500 flex items-center justify-center gap-2 rounded-md px-4 py-2"
+                          className=" background-light800_dark300  flex items-center justify-center gap-2 rounded-md px-4 py-2"
                           onClick={() => {
                             handleTagRemove(val, field);
                           }}
@@ -141,7 +135,7 @@ const Question = () => {
                   )}
                 </>
               </FormControl>
-              <FormDescription className="body-regular mt-2.5 text-light-500">
+              <FormDescription className=" mt-2.5 text-light-500">
                 Zadajte email používateľa, ktorého chcete pridať do skupiny.
               </FormDescription>
               <FormMessage className="text-red-500" />
