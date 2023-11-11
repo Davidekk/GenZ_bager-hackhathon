@@ -11,7 +11,6 @@ const GroupsSchema = new Schema<IGroups>({
   ownerId: {
     type: String,
     required: true,
-    unique: true,
   },
   createdOn: {
     type: Date,

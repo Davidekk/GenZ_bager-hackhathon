@@ -56,8 +56,11 @@ export async function getGroupById(params: getGroupByIdParams) {
       strictPopulate: false, // Not recommended
     });
 
+    console.log(groups);
+
     const idToStrings = groups.groupIds.map((id: any) => id._id.toString());
-    return idToStrings;
+    const emails = groups.groupIds.map((id: any) => id.email);
+    return { idToStrings, emails };
   } catch (error) {
     console.log(error);
     throw new Error("Error getting groups");

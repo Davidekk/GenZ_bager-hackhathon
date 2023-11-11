@@ -8,6 +8,14 @@ import NoResult from "@/components/shared/NoResult";
 import Pagination from "@/components/Pagination";
 import Loading from "./loading";
 import { getGroupById } from "@/lib/action/groups.action";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 type QuestionResult = {
   sqlResponse?: any[];
@@ -25,9 +33,9 @@ export default async function NameChangesPageWrapper({
     dialog: undefined,
   });
 
-  const getGroupsId = await getGroupById({ id: params.id });
-  console.log(getGroupsId);
-  if (!getGroupsId) {
+  const { idToStrings, emails } = await getGroupById({ id: params.id });
+
+  if (!idToStrings) {
     return (
       <NoResult
         title={"There is nothing to show"}
@@ -41,11 +49,14 @@ export default async function NameChangesPageWrapper({
       <div className="flex-center flex w-full ">
         <Search route={`/groups/${params.id}`} />
       </div>
+
+      <div className="flex-start my-6 flex w-full gap-2"></div>
       <Suspense key={key} fallback={<Loading />}>
         <NameChangesPage
           searchParams={searchParams}
-          getGroupsId={getGroupsId}
+          getGroupsId={idToStrings}
           userId={params.id}
+          emails={emails}
         />
       </Suspense>
     </>
@@ -56,7 +67,8 @@ async function NameChangesPage({
   searchParams,
   getGroupsId,
   userId,
-}: SearchParamsProps) {
+  emails,
+}: any) {
   let result: QuestionResult = { sqlResponse: [], isNext: false };
   const pagination: any[][] = [];
   if (searchParams.q) {
@@ -80,6 +92,16 @@ async function NameChangesPage({
     <>
       <div className="flex-between my-5 flex gap-1">
         <Dropdown />
+        <DropdownMenu>
+          <DropdownMenuTrigger className="primary-gradient flex flex-row gap-2 rounded p-2 px-4 outline-none ">
+            <span className="text-light-900">Users</span>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {emails.map((email: string) => (
+              <DropdownMenuItem key={email}>{email}</DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
       {result?.sqlResponse?.length === 0 ? (
         <>

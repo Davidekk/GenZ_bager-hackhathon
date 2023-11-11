@@ -7,31 +7,33 @@ import LocalSearchbar from "@/components/shared/LocalSearchbar";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { createUser, loginUser } from "@/lib/action/user.action";
-import { useAuth } from "@/context/Auth";
+import axios from "axios";
 
 const Page = () => {
   const [activeTab, setActiveTab] = useState("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const redirect = useRouter();
-  const { setAuth } = useAuth();
 
   const handleLogin = async () => {
     const user = await loginUser({ email, password });
     if (user) {
-      setAuth(user._id);
+      await axios.post("/api/nfc", {
+        uid: user._id,
+      });
       redirect.push("/");
     }
   };
 
   const handleRegister = async () => {
-    console.log("register");
     const user = await createUser({
       email,
       password,
     });
     if (user) {
-      setAuth(user._id);
+      await axios.post("/api/nfc", {
+        uid: user._id,
+      });
       redirect.push("/");
     }
   };
