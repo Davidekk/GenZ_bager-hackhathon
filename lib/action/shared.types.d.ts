@@ -15,6 +15,7 @@ export interface getSQLParams {
   page: number;
   pageSize: number;
   groupId: any;
+  userId: any;
 }
 
 export interface groupCreateParams {

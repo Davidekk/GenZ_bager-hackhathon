@@ -26,6 +26,7 @@ export default async function NameChangesPageWrapper({
   });
 
   const getGroupsId = await getGroupById({ id: params.id });
+  console.log(getGroupsId);
   if (!getGroupsId) {
     return (
       <NoResult
@@ -44,7 +45,7 @@ export default async function NameChangesPageWrapper({
         <NameChangesPage
           searchParams={searchParams}
           getGroupsId={getGroupsId}
-          user={params.id}
+          userId={params.id}
         />
       </Suspense>
     </>
@@ -54,6 +55,7 @@ export default async function NameChangesPageWrapper({
 async function NameChangesPage({
   searchParams,
   getGroupsId,
+  userId,
 }: SearchParamsProps) {
   let result: QuestionResult = { sqlResponse: [], isNext: false };
   const pagination: any[][] = [];
