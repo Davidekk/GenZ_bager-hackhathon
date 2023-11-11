@@ -34,7 +34,7 @@ export async function getQuestion(params: getSQLParams) {
         );
         
 
-        create select from this table ${question} 
+        create select from this table ${question} my id is  ${ids || ""}
         but return ONLY the SQL without any extra commentary but do not return markdown just plain SQL
         `,
         },

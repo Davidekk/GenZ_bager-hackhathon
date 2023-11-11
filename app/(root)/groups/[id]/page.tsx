@@ -44,6 +44,7 @@ export default async function NameChangesPageWrapper({
         <NameChangesPage
           searchParams={searchParams}
           getGroupsId={getGroupsId}
+          user={params.id}
         />
       </Suspense>
     </>
