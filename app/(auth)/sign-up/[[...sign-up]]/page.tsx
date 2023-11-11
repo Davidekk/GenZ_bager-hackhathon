@@ -2,18 +2,46 @@
 
 import Logo from "@/components/shared/navbar/Logo";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LocalSearchbar from "@/components/shared/LocalSearchbar";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { createUser, loginUser } from "@/lib/action/user.action";
 import axios from "axios";
+import Image from "next/image";
 
 const Page = () => {
   const [activeTab, setActiveTab] = useState("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [cardId, setCardId] = useState("");
   const redirect = useRouter();
+
+  console.log(cardId);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      axios
+        .get("/api/nfc")
+        .then(async (response) => {
+          // Spracovanie odpovede
+          if (response.data.data !== "44506691") return;
+
+          await axios.post("/api/nfc", {
+            card_id: "654f411095c1d707c4b1b1b5",
+          });
+          redirect.push("/");
+          setCardId(response.data);
+        })
+        .catch((error) => {
+          // Spracovanie chyby
+          console.error("Chyba pri vykonávaní GET požiadavky", error);
+        });
+    }, 5000); // 5000 ms = 5 sekúnd
+
+    // Čistenie intervalu, keď komponent nie je viac zobrazený
+    return () => clearInterval(interval);
+  }, []);
 
   const handleLogin = async () => {
     const user = await loginUser({ email, password });
@@ -136,7 +164,22 @@ const Page = () => {
             Register{" "}
           </Button>
         </TabsContent>
-        <TabsContent value="card-login">card login</TabsContent>
+        <TabsContent value="card-login">
+          <div className="flex-center mb-5 flex flex-col pt-2">
+            <p className="h2-bold flex font-spaceGrotesk text-dark-100 dark:text-light-900 ">
+              Attach the card
+            </p>
+            <div className="mt-5 flex h-full w-full justify-center border border-dashed border-slate-500 p-10 ">
+              <Image
+                src="/assets/icons/credit_card.svg"
+                alt="credit card"
+                width={100}
+                height={100}
+                className="animate-bounce rounded-full"
+              />
+            </div>
+          </div>
+        </TabsContent>
       </Tabs>
     </div>
   );

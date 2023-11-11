@@ -78,6 +78,20 @@ const Search = ({ route }: Params) => {
             />
           </DialogTrigger>
         </Dialog>
+        <Dialog>
+          <DialogTrigger
+            className="primary-gradient mb-2 flex flex-row gap-2 rounded p-2 px-4"
+            onClick={() => {}}
+          >
+            <Image
+              src="/assets/icons/mic.svg"
+              height={24}
+              width={24}
+              alt="keyboard icon"
+              className="invert"
+            />
+          </DialogTrigger>
+        </Dialog>
       </div>
       <div className="w-full px-4">
         <Button
