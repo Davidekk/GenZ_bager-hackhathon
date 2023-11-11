@@ -1,7 +1,7 @@
 import CreateTable from "@/components/shared/responseUI/ResponseTable";
 import { Suspense } from "react";
 import Dropdown from "@/components/shared/DropDown";
-import { SearchParamsProps, URLProps } from "@/types";
+import { URLProps } from "@/types";
 import Search from "@/components/shared/Search";
 import { getQuestion } from "@/lib/action/openai.action";
 import NoResult from "@/components/shared/NoResult";
@@ -12,8 +12,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
