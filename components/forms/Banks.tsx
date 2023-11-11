@@ -6,15 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
-import { CreateBank, CreateGroups } from "@/lib/validation";
+import { CreateBank } from "@/lib/validation";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
-import { createGroup } from "@/lib/action/groups.action";
+
 import {
   Command,
   CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
@@ -37,8 +36,7 @@ const Banks = () => {
   });
 
   // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof CreateBank>) {
-    console.log("clicked");
+  async function onSubmit(values: any) {
     setIsSubmitting(true);
 
     try {
