@@ -52,7 +52,7 @@ export async function getGroupById(params: getGroupByIdParams) {
     const groups = await Groups.findOne({ _id: params.id }).populate({
       path: "groupIds",
       model: User,
-      select: "_id",
+      select: "_id email",
       strictPopulate: false, // Not recommended
     });
 
