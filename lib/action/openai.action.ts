@@ -10,7 +10,12 @@ const openai = new OpenAI({
 
 export async function getQuestion(params: getSQLParams) {
   try {
-    const { question } = params;
+    const { question, groupId = "" } = params;
+
+    let ids = "";
+    if (groupId !== "") {
+      ids = `and group_id = ${groupId}`;
+    }
     const chatCompletion = await openai.chat.completions.create({
       messages: [
         {
@@ -29,7 +34,7 @@ export async function getQuestion(params: getSQLParams) {
         );
         
 
-        create select from this table ${question}
+        create select from this table ${question} 
         but return ONLY the SQL without any extra commentary but do not return markdown just plain SQL
         `,
         },

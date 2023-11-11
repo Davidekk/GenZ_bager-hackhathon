@@ -17,12 +17,12 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/assets/icons/home.svg",
-    route: "/collection",
-    label: "daco",
+    route: "/groups",
+    label: "Skupiny",
   },
 ];
 
-export const graphTypes: GraphProps[] = [
+export const graphTypes = [
   {
     icon: "/assets/icons/bar.svg",
     title: "Bar",
