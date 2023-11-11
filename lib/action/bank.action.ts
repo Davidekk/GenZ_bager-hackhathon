@@ -1,6 +1,5 @@
 "use server";
 
-import User from "@/database/user.model";
 import { connectToDatabase } from "../mongodb/connectdb";
 import { bankCreateParams, getGroupByIdParams } from "./shared.types";
 import Groups from "@/database/groups.model";
