@@ -48,7 +48,7 @@ export async function getQuestion(params: getSQLParams) {
       return { error: "No response from OpenAI.", isNext: false };
 
     const sqlResponse = await getQuestionFromSQL(
-      chatCompletion?.choices[0]?.message?.content
+      chatCompletion?.choices[0]?.message?.content || ""
     );
 
     return { sqlResponse, isNext: false, historyId: "123" };
