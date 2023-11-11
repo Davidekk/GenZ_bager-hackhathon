@@ -1,7 +1,7 @@
 export interface SearchParamsProps {
   searchParams: { [key: string]: string | undefined };
-  getGroupsId: any;
-  userId: any;
+  getGroupsId?: any;
+  userId?: any;
 }
 
 export interface URLProps {

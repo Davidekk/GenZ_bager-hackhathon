@@ -14,8 +14,8 @@ export interface getSQLParams {
   question: string;
   page: number;
   pageSize: number;
-  groupId: any;
-  userId: any;
+  groupId?: any;
+  userId?: any;
 }
 
 export interface groupCreateParams {
