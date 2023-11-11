@@ -26,3 +26,9 @@ export interface groupCreateParams {
 export interface getGroupByIdParams {
   id: string;
 }
+export interface bankCreateParams {
+  title: string;
+  ownerId: any;
+  icon: string;
+  path: string;
+}

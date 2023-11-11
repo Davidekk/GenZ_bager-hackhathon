@@ -21,27 +21,28 @@ export async function getQuestion(params: getSQLParams) {
         {
           role: "user",
           content: `
-          CREATE TABLE banking_data (
-            Id INTEGER,
-            AccountType VARCHAR(255),
-            User_Name VARCHAR(255),
-            User_Surname VARCHAR(255),
-            PaymentType VARCHAR(255),
-            PaymentCategory VARCHAR(255),
-            PaymentDate DATE,
-            Amount DECIMAL(10, 2),
-            Partner_Name VARCHAR(255)
-        );
-        
+          create select from this structure of table
 
-        create select from this table ${question} ${
-          userId ? `my id is ${userId}` : ""
-        } ${ids || ""}
+          CREATE TABLE banking_data (
+            User_Id VARCHAR(255), this is user id
+            Bank_Id VARCHAR(255), this is name of the bank
+            User_Name VARCHAR(255), this is name of the user
+            User_Surname VARCHAR(255), this is surname of the user
+            Payment_Method VARCHAR(255), this is payment method, can be online or card
+            Transaction_Purpose VARCHAR(255), this can be Income,Travel,Savings,Shop,Grocery,Withdraw,Event
+            Payment_Date DATE, this is date of the payment
+            Amount DECIMAL(10, 2), this is amount of the payment if transaction purpose is income then amount is positive else negative
+            PaymentRecipientOrSender_Name VARCHAR(255), this is name of the recipient or sender
+            );
+            
+            and question is ${question} ${userId ? `my id is ${userId}` : ""} ${
+              ids || ""
+            }
         but return ONLY the SQL without any extra commentary but do not return markdown just plain SQL
         `,
         },
       ], // gpt-4-1106-preview gpt-3.5-turbo
-      model: "gpt-4-1106-preview",
+      model: "gpt-3.5-turbo",
     });
 
     if (chatCompletion?.choices[0]?.message?.content === undefined || null)

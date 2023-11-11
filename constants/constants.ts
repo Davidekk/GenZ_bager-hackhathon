@@ -55,3 +55,26 @@ export const filterOptions = [
     value: "oldest",
   },
 ];
+
+export const banks = [
+  {
+    title: "Tatra banka",
+    icon: "/assets/images/tatra.png",
+  },
+  {
+    title: "Slovenská sporiteľňa",
+    icon: "/assets/images/erste.png",
+  },
+  {
+    title: "Prima banka",
+    icon: "/assets/images/prima.png",
+  },
+  {
+    title: "PayPal",
+    icon: "/assets/images/paypal.png",
+  },
+  {
+    title: "Revolut",
+    icon: "/assets/images/revolut.png",
+  },
+];
