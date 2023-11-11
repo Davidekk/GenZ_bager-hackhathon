@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-function BankCard({accountData}) {
+function BankCard({ accountData }: any) {
   return (
-    <article className="background-light900_dark200 light-border flex flex-col w-full items-center justify-center rounded-2xl border px-5 py-3">
+    <article className="background-light900_dark200 light-border flex w-full flex-col items-center justify-center rounded-2xl border px-5 py-3">
       <Image
         src="/assets/images/empty.png"
         alt="user profile picture"
