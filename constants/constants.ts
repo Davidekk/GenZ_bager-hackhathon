@@ -26,22 +26,22 @@ export const graphTypes: GraphProps[] = [
   {
     icon: "/assets/icons/bar.svg",
     title: "Bar",
-    label: "bar",
+    label: "Bar",
   },
   {
     icon: "/assets/icons/line.svg",
     title: "Line",
-    label: "line",
+    label: "LineChart",
   },
   {
     icon: "/assets/icons/pie2.svg",
     title: "Pie",
-    label: "pie",
+    label: "PieChart",
   },
   {
     icon: "/assets/icons/linear.svg",
     title: "Linear",
-    label: "linear",
+    label: "BarChart",
   },
 ];
 

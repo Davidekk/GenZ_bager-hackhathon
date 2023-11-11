@@ -14,7 +14,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const CreateHeader = ({ headerData, setDataKey }: any) => {
-  console.log(headerData);
   const headers = Object?.keys(headerData[0]);
 
   const handleHeaderClick = (header: any) => {
@@ -108,7 +107,7 @@ const Modal = ({ data }: any) => {
       </DialogTrigger>
       <DialogContent className="background-light850_dark100">
         <DialogHeader>
-          <DialogTitle>TU BUDU RAZ GRAFY MILAN </DialogTitle>
+          <DialogTitle>{chartType}</DialogTitle>
           <CreateHeader headerData={data} setDataKey={setDataKey} />
           <DialogDescription>
             <UniversalChart

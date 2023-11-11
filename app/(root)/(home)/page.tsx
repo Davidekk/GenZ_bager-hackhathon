@@ -57,7 +57,7 @@ async function NameChangesPage({ searchParams }: SearchParamsProps) {
   return (
     <>
       <div className="flex-between my-5 flex gap-1">
-        <Dropdown />
+        <Dropdown data={data} />
       </div>
       {result?.sqlResponse?.length === 0 ? (
         <>
@@ -79,3 +79,13 @@ async function NameChangesPage({ searchParams }: SearchParamsProps) {
     </>
   );
 }
+
+const data = [
+  { name: "Milan", surname: "Pankuch", amount: 10 },
+  { name: "Milan", surname: "Pankuch", amount: 30 },
+  { name: "Milan", surname: "Pankuch", amount: 20 },
+  { name: "Dávid", surname: "Halčin", amount: 20 },
+  { name: "Erik", surname: "Mišenčík", amount: 10 },
+  { name: "Vladimír", surname: "Hric", amount: 50 },
+  { name: "Martin", surname: "Onufrák", amount: 40 },
+];

@@ -58,6 +58,10 @@ const UniversalChart = ({ data, dataKey, chartType }: any) => {
         color: legendTextColor,
       },
     },
+    animation: {
+      duration: 1000,
+      easing: "linear",
+    },
   };
 
   return (

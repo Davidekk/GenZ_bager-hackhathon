@@ -62,15 +62,15 @@ const Search = ({ route }: Params) => {
           }}
           placeholder="Search..."
           value={searchQuery}
-          className=" background-light900_dark200 text-light900_dark100 text-dark100_light900 mb-2 w-full resize-y  overflow-hidden rounded-xl border p-2 outline-fuchsia-500 dark:border-gray-700"
+          className="background-light900_dark200 text-light900_dark100 text-dark100_light900 mb-2 w-full resize-y  overflow-hidden rounded-xl border p-2 outline-fuchsia-500 dark:border-gray-700"
         />
         <Dialog>
           <DialogTrigger
-            className="primary-gradient flex flex-row gap-2 rounded p-2 px-4"
+            className="primary-gradient mb-2 flex flex-row gap-2 rounded p-2 px-4"
             onClick={() => showKeyboard()}
           >
             <Image
-              src="../../public/assets/icons/keyboard.svg"
+              src="/assets/icons/keyboard.svg"
               height={24}
               width={24}
               alt="keyboard icon"
