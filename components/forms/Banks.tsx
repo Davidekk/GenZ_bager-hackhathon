@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
 import { CreateBank } from "@/lib/validation";
 import React, { useState } from "react";
-import { usePathname } from "next/navigation";
 
 import {
   Command,
@@ -21,8 +20,9 @@ import { Label } from "@/components/ui/label";
 import { banks } from "@/constants/constants";
 import Image from "next/image";
 import { createBank } from "@/lib/action/bank.action";
+import { usePathname } from "next/navigation";
 
-const Banks = () => {
+const Banks = ({ id }: any) => {
   const pathname = usePathname();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,7 +42,7 @@ const Banks = () => {
     try {
       await createBank({
         title: bank,
-        ownerId: "1",
+        ownerId: id,
         path: pathname,
         icon,
       });

@@ -9,13 +9,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Banks from "@/components/forms/Banks";
-// import CardGroups from "@/components/forms/Groups";
+import { getBankById } from "@/lib/action/bank.action";
+import { getUser } from "@/lib/action/user.action";
 
-function BankCards({ data }: any) {
-  console.log(data);
+async function BankCards() {
+  const { id }: any = await getUser();
+  const result = await getBankById({ id });
   return (
     <div className="shadow-light100_darknone flex w-full max-w-3xl flex-row gap-10 max-xs:min-w-full">
-      {data.map((accountData: any, index: any) => (
+      {result.map((accountData: any, index: any) => (
         <BankCard
           icon={accountData.icon}
           title={accountData.title}
@@ -30,7 +32,7 @@ function BankCards({ data }: any) {
         <DialogContent className="background-light900_dark200">
           <DialogHeader>
             <DialogTitle>Vytvorte skupinu</DialogTitle>
-            <Banks />
+            <Banks id={id} />
           </DialogHeader>
         </DialogContent>
       </Dialog>

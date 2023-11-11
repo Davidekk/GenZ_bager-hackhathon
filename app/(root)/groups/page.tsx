@@ -10,9 +10,11 @@ import CardGroups from "@/components/forms/Groups";
 import { getGroups } from "@/lib/action/groups.action";
 import GroupCard from "@/components/shared/cards/GroupCard";
 import Image from "next/image";
+import { getUser } from "@/lib/action/user.action";
 
 const page = async () => {
-  const result = await getGroups();
+  const { id }: any = await getUser();
+  const result = await getGroups({ ownerId: id });
 
   return (
     <div>
@@ -55,7 +57,7 @@ const page = async () => {
           <DialogContent className="background-light850_dark100">
             <DialogHeader>
               <DialogTitle>Vytvorte skupinu</DialogTitle>
-              <CardGroups />
+              <CardGroups id={id} />
             </DialogHeader>
           </DialogContent>
         </Dialog>

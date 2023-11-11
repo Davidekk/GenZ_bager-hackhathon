@@ -20,7 +20,7 @@ import { usePathname } from "next/navigation";
 import { Badge } from "../ui/badge";
 import { createGroup } from "@/lib/action/groups.action";
 
-const Question = () => {
+const Question = ({ id }: any) => {
   const pathname = usePathname();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -71,7 +71,7 @@ const Question = () => {
       await createGroup({
         title: values.title,
         groupIds: values.tags,
-        ownerId: "1",
+        ownerId: id,
         path: pathname,
       });
     } catch (error) {

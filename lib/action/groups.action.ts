@@ -32,11 +32,14 @@ export async function createGroup(params: groupCreateParams) {
   }
 }
 
-export async function getGroups() {
+interface Props {
+  ownerId: string;
+}
+export async function getGroups(params: Props) {
   try {
     await connectToDatabase();
 
-    const groups = await Groups.find({});
+    const groups = await Groups.find({ params });
 
     return groups;
   } catch (error) {

@@ -19,7 +19,7 @@ const Page = () => {
     const user = await loginUser({ email, password });
     if (user) {
       await axios.post("/api/nfc", {
-        uid: user._id,
+        card_id: user._id,
       });
       redirect.push("/");
     }
@@ -32,7 +32,7 @@ const Page = () => {
     });
     if (user) {
       await axios.post("/api/nfc", {
-        uid: user._id,
+        card_id: user._id,
       });
       redirect.push("/");
     }
