@@ -7,8 +7,8 @@ let user = "default";
 export async function POST(request) {
   try {
     const body = await request.json();
-    user = body.uid;
-    return NextResponse.json({ data: body.uid }, { status: 200 });
+    user = body.card_id;
+    return NextResponse.json({ data: user }, { status: 200 });
   } catch (error) {
     NextResponse.json({ error: "Internal Server Error" });
   }
