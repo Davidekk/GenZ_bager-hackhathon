@@ -6,17 +6,17 @@ export const themes = [
 
 export const sidebarLinks = [
   {
-    imgURL: "/assets/icons/home.svg",
+    imgURL: "/assets/icons/home2.svg",
     route: "/",
-    label: "Home",
+    label: "Domov",
   },
   {
-    imgURL: "/assets/icons/home.svg",
+    imgURL: "/assets/icons/finance.svg",
     route: "/accounts",
     label: "Účty",
   },
   {
-    imgURL: "/assets/icons/home.svg",
+    imgURL: "/assets/icons/groups.svg",
     route: "/groups",
     label: "Skupiny",
   },

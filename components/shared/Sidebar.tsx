@@ -27,7 +27,7 @@ const Sidebar = () => {
                 width={20}
                 height={20}
                 alt={label}
-                className="invert-colors"
+                className=""
               />
               <p
                 className={` ${
