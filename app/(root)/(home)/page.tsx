@@ -17,6 +17,8 @@ type QuestionResult = {
 
 export default async function NameChangesPageWrapper({
   searchParams,
+  getGroupsId,
+  userId,
 }: SearchParamsProps) {
   const key = JSON.stringify({
     searchParams,
